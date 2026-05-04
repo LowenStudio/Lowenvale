@@ -62,6 +62,11 @@ if (boardLists.length) {
       renderFilteredBoard(list, boardEntries, pageSize, 1);
 
       if (boardSearchForm) {
+        boardSearchForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          renderFilteredBoard(list, boardEntries, pageSize, 1);
+        });
+
         boardSearchForm.addEventListener("input", () => {
           renderFilteredBoard(list, boardEntries, pageSize, 1);
         });
@@ -77,7 +82,7 @@ if (boardLists.length) {
     }
 
     const visibleEntries = Number.isFinite(limit) && limit > 0 ? boardEntries.slice(0, limit) : boardEntries;
-    renderBoardItems(list, visibleEntries);
+    renderBoardItems(list, visibleEntries, "No notices published yet.");
   });
 
   if (boardCount) {
@@ -100,11 +105,11 @@ if (boardLists.length) {
   });
 }
 
-function renderBoardItems(list, entries) {
+function renderBoardItems(list, entries, emptyMessage = "No matching notices found.") {
   if (!entries.length) {
     list.innerHTML = `
       <div class="border border-line bg-white p-6">
-        <p class="font-bold text-ink">No notices found.</p>
+        <p class="font-bold text-ink">${emptyMessage}</p>
       </div>
     `;
     return;
