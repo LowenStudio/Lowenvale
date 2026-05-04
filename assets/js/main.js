@@ -4,6 +4,11 @@ const revealItems = document.querySelectorAll("[data-reveal]");
 const boardLists = document.querySelectorAll("[data-board-list]");
 const boardCount = document.querySelector("[data-board-count]");
 const boardPagination = document.querySelector("[data-board-pagination]");
+const boardSearchForm = document.querySelector("[data-board-search]");
+const boardTitleSearch = document.querySelector("[data-board-title-search]");
+const boardContentSearch = document.querySelector("[data-board-content-search]");
+const boardDateFrom = document.querySelector("[data-board-date-from]");
+const boardDateTo = document.querySelector("[data-board-date-to]");
 const noticeModal = document.querySelector("[data-notice-modal]");
 const noticeModalPanel = document.querySelector("[data-notice-modal-panel]");
 const noticeModalDate = document.querySelector("[data-notice-modal-date]");
@@ -47,18 +52,32 @@ if ("IntersectionObserver" in window) {
 
 if (boardLists.length) {
   const boardItems = Array.isArray(window.lowenvaleBoard) ? window.lowenvaleBoard : [];
+  const boardEntries = boardItems.map((item, index) => ({ item, index }));
 
   boardLists.forEach((list) => {
     const limit = Number(list.dataset.boardLimit);
     const pageSize = Number(list.dataset.boardPageSize);
 
     if (Number.isFinite(pageSize) && pageSize > 0) {
-      renderPaginatedBoard(list, boardItems, pageSize, 1);
+      renderFilteredBoard(list, boardEntries, pageSize, 1);
+
+      if (boardSearchForm) {
+        boardSearchForm.addEventListener("input", () => {
+          renderFilteredBoard(list, boardEntries, pageSize, 1);
+        });
+
+        boardSearchForm.addEventListener("reset", () => {
+          window.setTimeout(() => {
+            renderFilteredBoard(list, boardEntries, pageSize, 1);
+          }, 0);
+        });
+      }
+
       return;
     }
 
-    const visibleItems = Number.isFinite(limit) && limit > 0 ? boardItems.slice(0, limit) : boardItems;
-    renderBoardItems(list, visibleItems, 0);
+    const visibleEntries = Number.isFinite(limit) && limit > 0 ? boardEntries.slice(0, limit) : boardEntries;
+    renderBoardItems(list, visibleEntries);
   });
 
   if (boardCount) {
@@ -81,26 +100,36 @@ if (boardLists.length) {
   });
 }
 
-function renderBoardItems(list, items, startIndex) {
-  if (!items.length) {
+function renderBoardItems(list, entries) {
+  if (!entries.length) {
     list.innerHTML = `
       <div class="border border-line bg-white p-6">
-        <p class="font-bold text-ink">No notices published yet.</p>
+        <p class="font-bold text-ink">No notices found.</p>
       </div>
     `;
     return;
   }
 
-  list.innerHTML = items.map((item, index) => renderBoardItem(item, startIndex + index)).join("");
+  list.innerHTML = entries.map((entry) => renderBoardItem(entry.item, entry.index)).join("");
 }
 
-function renderPaginatedBoard(list, items, pageSize, currentPage) {
-  const totalPages = Math.ceil(items.length / pageSize);
+function renderFilteredBoard(list, entries, pageSize, currentPage) {
+  const filteredEntries = filterBoardEntries(entries);
+
+  if (boardCount) {
+    boardCount.textContent = `${filteredEntries.length} ${filteredEntries.length === 1 ? "notice" : "notices"}`;
+  }
+
+  renderPaginatedBoard(list, filteredEntries, pageSize, currentPage);
+}
+
+function renderPaginatedBoard(list, entries, pageSize, currentPage) {
+  const totalPages = Math.ceil(entries.length / pageSize);
   const safePage = Math.min(Math.max(currentPage, 1), Math.max(totalPages, 1));
   const startIndex = (safePage - 1) * pageSize;
-  const visibleItems = items.slice(startIndex, startIndex + pageSize);
+  const visibleEntries = entries.slice(startIndex, startIndex + pageSize);
 
-  renderBoardItems(list, visibleItems, startIndex);
+  renderBoardItems(list, visibleEntries);
 
   if (!boardPagination) {
     return;
@@ -134,8 +163,39 @@ function renderPaginatedBoard(list, items, pageSize, currentPage) {
 
   boardPagination.querySelectorAll("[data-board-page]").forEach((button) => {
     button.addEventListener("click", () => {
-      renderPaginatedBoard(list, items, pageSize, Number(button.dataset.boardPage));
+      renderPaginatedBoard(list, entries, pageSize, Number(button.dataset.boardPage));
     });
+  });
+}
+
+function filterBoardEntries(entries) {
+  const titleQuery = (boardTitleSearch?.value || "").trim().toLowerCase();
+  const contentQuery = (boardContentSearch?.value || "").trim().toLowerCase();
+  const fromDate = boardDateFrom?.value || "";
+  const toDate = boardDateTo?.value || "";
+
+  return entries.filter(({ item }) => {
+    const title = String(item.title || "").toLowerCase();
+    const contents = String(item.contents || item.summary || item.details || "").toLowerCase();
+    const uploadedDate = item.uploadedDate || item.date || "";
+
+    if (titleQuery && !title.includes(titleQuery)) {
+      return false;
+    }
+
+    if (contentQuery && !contents.includes(contentQuery)) {
+      return false;
+    }
+
+    if (fromDate && uploadedDate < fromDate) {
+      return false;
+    }
+
+    if (toDate && uploadedDate > toDate) {
+      return false;
+    }
+
+    return true;
   });
 }
 

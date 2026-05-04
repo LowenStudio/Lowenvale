@@ -111,6 +111,51 @@
               <h2 class="text-xl font-extrabold">Published Notices</h2>
               <p class="text-sm font-semibold text-slate-500" data-board-count></p>
             </div>
+            <form class="mb-6 border border-line bg-white p-5" data-board-search>
+              <div class="grid gap-4 md:grid-cols-2">
+                <label class="block">
+                  <span class="text-sm font-bold text-slate-600">Title</span>
+                  <input
+                    type="search"
+                    class="mt-2 w-full rounded-md border border-line px-3 py-2 text-sm text-ink outline-none transition focus:border-harbor focus:ring-2 focus:ring-harbor/15"
+                    placeholder="Search title"
+                    data-board-title-search
+                  />
+                </label>
+                <label class="block">
+                  <span class="text-sm font-bold text-slate-600">Content</span>
+                  <input
+                    type="search"
+                    class="mt-2 w-full rounded-md border border-line px-3 py-2 text-sm text-ink outline-none transition focus:border-harbor focus:ring-2 focus:ring-harbor/15"
+                    placeholder="Search content"
+                    data-board-content-search
+                  />
+                </label>
+                <label class="block">
+                  <span class="text-sm font-bold text-slate-600">From date</span>
+                  <input
+                    type="date"
+                    class="mt-2 w-full rounded-md border border-line px-3 py-2 text-sm text-ink outline-none transition focus:border-harbor focus:ring-2 focus:ring-harbor/15"
+                    data-board-date-from
+                  />
+                </label>
+                <label class="block">
+                  <span class="text-sm font-bold text-slate-600">To date</span>
+                  <input
+                    type="date"
+                    class="mt-2 w-full rounded-md border border-line px-3 py-2 text-sm text-ink outline-none transition focus:border-harbor focus:ring-2 focus:ring-harbor/15"
+                    data-board-date-to
+                  />
+                </label>
+              </div>
+              <button
+                type="reset"
+                class="mt-4 rounded-md border border-line px-4 py-2 text-sm font-bold text-ink transition hover:border-harbor hover:text-harbor"
+                data-board-search-reset
+              >
+                Clear filters
+              </button>
+            </form>
             <div class="space-y-5" data-board-list data-board-page-size="5"></div>
             <div class="mt-8 flex flex-wrap gap-2" data-board-pagination></div>
           </div>
