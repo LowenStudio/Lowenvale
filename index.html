@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Lowenvale Co.,Ltd. is a software development corporation building clean web apps and mobile apps under the Lowenvale name."
+    />
+    <title>Lowenvale Co.,Ltd.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: "#121826",
+              mist: "#f6f7f9",
+              line: "#e3e7ec",
+              harbor: "#126b73",
+              leaf: "#6f8f61",
+              copper: "#b46b43",
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+            boxShadow: {
+              soft: "0 18px 45px rgba(18, 24, 38, 0.08)",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="bg-white font-sans text-ink antialiased">
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-line bg-white/90 backdrop-blur-xl">
+      <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
+        <a href="index.html" class="text-base font-extrabold tracking-tight text-ink sm:text-lg">Lowenvale Co.,Ltd.</a>
+        <div class="hidden items-center gap-7 text-sm font-semibold text-slate-600 md:flex">
+          <a class="transition hover:text-ink" href="#profile">Profile</a>
+          <a class="transition hover:text-ink" href="#services">Services</a>
+          <a class="transition hover:text-ink" href="board.html">Board</a>
+          <a class="transition hover:text-ink" href="#contact">Contact</a>
+        </div>
+        <a
+          href="#contact"
+          class="hidden rounded-md bg-ink px-4 py-2 text-sm font-bold text-white transition hover:bg-harbor sm:inline-flex"
+        >
+          Contact
+        </a>
+        <button
+          type="button"
+          class="grid h-10 w-10 place-items-center rounded-md border border-line text-ink md:hidden"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          data-menu-button
+        >
+          <span class="block h-0.5 w-5 bg-current before:block before:h-0.5 before:w-5 before:-translate-y-1.5 before:bg-current before:content-[''] after:block after:h-0.5 after:w-5 after:translate-y-1 after:bg-current after:content-['']"></span>
+        </button>
+      </nav>
+      <div class="hidden border-t border-line bg-white px-5 py-4 md:hidden" data-mobile-menu>
+        <div class="mx-auto flex max-w-6xl flex-col gap-4 text-sm font-semibold text-slate-700">
+          <a class="transition hover:text-ink" href="#profile">Profile</a>
+          <a class="transition hover:text-ink" href="#services">Services</a>
+          <a class="transition hover:text-ink" href="board.html">Board</a>
+          <a class="transition hover:text-ink" href="#contact">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="pt-16">
+        <div class="mx-auto grid min-h-[72vh] max-w-6xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div class="reveal is-visible">
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-harbor">Lowenvale Co.,Ltd.</p>
+            <h1 class="mt-5 max-w-2xl text-4xl font-extrabold leading-tight tracking-tight text-ink sm:text-5xl">
+              Web and mobile app development.
+            </h1>
+            <p class="mt-5 max-w-xl text-base leading-7 text-slate-700 sm:text-lg">
+              Lowenvale builds clear products with dependable code and focused execution.
+            </p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="#profile" class="rounded-md bg-ink px-6 py-3 text-center text-sm font-bold text-white shadow-soft transition hover:bg-harbor">
+                View focus
+              </a>
+              <a href="board.html" class="rounded-md border border-line bg-white px-6 py-3 text-center text-sm font-bold text-ink transition hover:border-harbor hover:text-harbor">
+                Company board
+              </a>
+            </div>
+          </div>
+
+          <div class="reveal border border-line bg-mist p-6 shadow-soft" data-reveal>
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-slate-500">Lowenvale focus</p>
+            <div class="mt-6 space-y-4">
+              <div class="border border-line bg-white p-5">
+                <p class="font-bold">Lowenvale web apps</p>
+                <p class="mt-2 text-sm leading-6 text-slate-600">Fast, responsive products for practical business use.</p>
+              </div>
+              <div class="border border-line bg-white p-5">
+                <p class="font-bold">Lowenvale mobile apps</p>
+                <p class="mt-2 text-sm leading-6 text-slate-600">Simple, useful mobile app experiences for practical product needs.</p>
+              </div>
+              <div class="border border-line bg-white p-5">
+                <p class="font-bold">Lowenvale product support</p>
+                <p class="mt-2 text-sm leading-6 text-slate-600">Iteration, maintenance, improvements, and launch support.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="profile" class="border-y border-line bg-mist py-20 sm:py-24">
+        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+          <div class="max-w-2xl">
+            <p class="text-sm font-bold uppercase tracking-[0.24em] text-harbor">Profile</p>
+            <h2 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">Lowenvale is focused by default.</h2>
+          </div>
+          <div class="mt-12 grid gap-5 md:grid-cols-3">
+            <article class="reveal border border-line bg-white p-7" data-reveal>
+              <p class="text-sm font-bold text-harbor">01</p>
+              <h3 class="mt-4 text-xl font-bold">Web Products</h3>
+              <p class="mt-4 leading-7 text-slate-600">Modern websites and frontends with clear content, fast structure, and responsive layouts.</p>
+            </article>
+            <article class="reveal border border-line bg-white p-7" data-reveal>
+              <p class="text-sm font-bold text-leaf">02</p>
+              <h3 class="mt-4 text-xl font-bold">Mobile Apps</h3>
+              <p class="mt-4 leading-7 text-slate-600">Clean mobile applications with focused flows, simple interfaces, and maintainable foundations.</p>
+            </article>
+            <article class="reveal border border-line bg-white p-7" data-reveal>
+              <p class="text-sm font-bold text-copper">03</p>
+              <h3 class="mt-4 text-xl font-bold">Product Systems</h3>
+              <p class="mt-4 leading-7 text-slate-600">APIs, dashboards, and supporting systems for web and mobile products.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="py-20 sm:py-24">
+        <div class="mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.82fr_1.18fr]">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-[0.24em] text-harbor">Services</p>
+            <h2 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">Lowenvale turns ideas into useful releases.</h2>
+          </div>
+          <div class="reveal divide-y divide-line border-y border-line" data-reveal>
+            <div class="grid gap-3 py-6 sm:grid-cols-[12rem_1fr]">
+              <h3 class="font-bold">Discovery</h3>
+              <p class="leading-7 text-slate-600">Clarify the product, users, data, and practical path to a first useful release.</p>
+            </div>
+            <div class="grid gap-3 py-6 sm:grid-cols-[12rem_1fr]">
+              <h3 class="font-bold">Design & Build</h3>
+              <p class="leading-7 text-slate-600">Create clean interfaces and dependable application logic with maintainable code.</p>
+            </div>
+            <div class="grid gap-3 py-6 sm:grid-cols-[12rem_1fr]">
+              <h3 class="font-bold">Launch</h3>
+              <p class="leading-7 text-slate-600">Prepare deployment, content, data flows, and final checks before going live.</p>
+            </div>
+            <div class="grid gap-3 py-6 sm:grid-cols-[12rem_1fr]">
+              <h3 class="font-bold">Improve</h3>
+              <p class="leading-7 text-slate-600">Maintain, refine, and extend the product as real business needs become clearer.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-y border-line bg-mist py-20 sm:py-24">
+        <div class="mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.78fr_1.22fr]">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-[0.24em] text-harbor">Board</p>
+            <h2 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">Official Lowenvale information and legal notices.</h2>
+            <p class="mt-5 leading-7 text-slate-600">The Lowenvale board keeps official company updates clear and easy to find.</p>
+            <a href="board.html" class="mt-7 inline-flex rounded-md bg-ink px-5 py-3 text-sm font-bold text-white transition hover:bg-harbor">
+              Open board
+            </a>
+          </div>
+          <div class="reveal space-y-4" data-board-list data-board-limit="3" data-reveal></div>
+        </div>
+      </section>
+
+      <section id="contact" class="py-20 sm:py-24">
+        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+          <div class="border border-line bg-white p-8 shadow-soft sm:p-10">
+            <p class="text-sm font-bold uppercase tracking-[0.24em] text-harbor">Contact</p>
+            <div class="mt-5 grid gap-8 lg:grid-cols-[1fr_0.75fr] lg:items-end">
+              <div>
+                <h2 class="max-w-2xl text-3xl font-extrabold tracking-tight sm:text-4xl">Useful software, built with focus.</h2>
+                <p class="mt-5 max-w-2xl leading-8 text-slate-700">
+                  Contact Lowenvale Co.,Ltd. for focused web app and mobile app development under the Lowenvale name.
+                </p>
+              </div>
+              <a href="mailto:contact@lowenvale.com" class="block break-words rounded-md bg-ink px-5 py-4 text-sm font-bold text-white transition hover:bg-harbor">
+                contact@lowenvale.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-line py-8">
+      <div class="mx-auto flex max-w-6xl flex-col gap-4 px-5 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <p>&copy; 2026 Lowenvale Co.,Ltd. All rights reserved.</p>
+        <div class="flex gap-5">
+          <a class="transition hover:text-ink" href="#profile">Profile</a>
+          <a class="transition hover:text-ink" href="board.html">Board</a>
+          <a class="transition hover:text-ink" href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="fixed inset-0 z-[70] hidden bg-ink/55 p-5 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="notice-modal-title" data-notice-modal>
+      <div class="flex min-h-full items-center justify-center">
+        <div class="w-full max-w-2xl border border-line bg-white p-6 shadow-soft sm:p-8" data-notice-modal-panel>
+          <div class="flex items-start justify-between gap-6">
+            <time class="text-sm font-bold text-harbor" data-notice-modal-date></time>
+            <button
+              type="button"
+              class="rounded-md border border-line px-3 py-1.5 text-sm font-bold text-ink transition hover:border-harbor hover:text-harbor"
+              data-notice-modal-close
+            >
+              Close
+            </button>
+          </div>
+          <h2 id="notice-modal-title" class="mt-5 text-2xl font-extrabold tracking-tight text-ink sm:text-3xl" data-notice-modal-title></h2>
+          <p class="mt-5 whitespace-pre-line leading-8 text-slate-700" data-notice-modal-contents></p>
+          <div data-notice-modal-attachments></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="data/board.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

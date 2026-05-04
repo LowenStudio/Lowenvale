@@ -1,0 +1,3 @@
+This is an example notice attachment.
+
+Replace this file with a PDF, image, document, or other file you want visitors to download.
