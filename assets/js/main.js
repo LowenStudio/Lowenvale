@@ -52,7 +52,9 @@ if ("IntersectionObserver" in window) {
 
 if (boardLists.length) {
   const boardItems = Array.isArray(window.lowenvaleBoard) ? window.lowenvaleBoard : [];
-  const boardEntries = boardItems.map((item, index) => ({ item, index }));
+  const boardEntries = boardItems
+    .map((item, index) => ({ item, index }))
+    .sort((a, b) => getNoticeDateValue(b.item) - getNoticeDateValue(a.item));
 
   boardLists.forEach((list) => {
     const limit = Number(list.dataset.boardLimit);
@@ -202,6 +204,12 @@ function filterBoardEntries(entries) {
 
     return true;
   });
+}
+
+function getNoticeDateValue(item) {
+  const date = Date.parse(item.uploadedDate || item.date || "");
+
+  return Number.isNaN(date) ? 0 : date;
 }
 
 if (noticeModal) {

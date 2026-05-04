@@ -1,5 +1,12 @@
 window.lowenvaleBoard = [
   {
+    uploadedDate: "2026-05-05",
+    title: "hello, CEO of Lowenvale",
+    contents:
+      "I would like to greet you all. I am the CEO of Lowenvale, and I am very excited to share our journey with you through this board. We will be posting updates about our projects, company news, and any important announcements here. Thank you for being a part of our community!",
+    attachments: [],
+  },
+  {
     uploadedDate: "2026-05-04",
     title: "Lowenvale board opened",
     contents:
@@ -10,12 +17,5 @@ window.lowenvaleBoard = [
         url: "files/notices/example-attachment.txt",
       },
     ],
-  },
-  {
-    uploadedDate: "2026-05-05",
-    title: "hello, CEO of Lowenvale",
-    contents:
-      "I would like to greet you all. I am the CEO of Lowenvale, and I am very excited to share our journey with you through this board. We will be posting updates about our projects, company news, and any important announcements here. Thank you for being a part of our community!",
-    attachments: [],
   },
 ];
